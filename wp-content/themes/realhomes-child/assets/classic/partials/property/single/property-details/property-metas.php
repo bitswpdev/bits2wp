@@ -100,13 +100,14 @@ if ( is_singular( 'property' ) ) {
 
 						$data_rjs = ( file_exists( $icons_dir . $field['icon'] . '@2x.png' ) ) ? '2' : '';
 
-						echo '<img src="' . esc_url( $icons_uri . $field['icon'] ) . '.png" alt="icon" data-rjs="' . esc_attr( $data_rjs ) . '">';
+						//echo '<img src="' . esc_url( $icons_uri . $field['icon'] ) . '.png" alt="icon" data-rjs="' . esc_attr( $data_rjs ) . '">';
+                        echo '<strong>' . $field['name'] . '</strong>:&nbsp;';
 					}
-					echo esc_html( $post_meta_data[ $meta_key ][0] . '&nbsp;' . $field_label );
+					//echo esc_html( $post_meta_data[ $meta_key ][0] . '&nbsp;' . $field_label );
+                    echo $post_meta_data[ $meta_key ][0] . '&nbsp;' . $field_label;
 					echo '</span>';
 				}
 			}
 		}
 	}
 }
-
