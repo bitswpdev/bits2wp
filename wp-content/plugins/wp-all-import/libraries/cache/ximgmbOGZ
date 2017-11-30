@@ -1,0 +1,18 @@
+<?php $x0 = $this->xml;
+$v3_0 = $x0->xpath("images[1]/image[1]");
+$v3_1 = $x0->xpath("images[1]/image[2]");
+$v3_2 = $x0->xpath("images[1]/image[3]");
+$v3_3 = $x0->xpath("images[1]/image[4]");
+$v3_4 = $x0->xpath("images[1]/image[5]");
+$v3_5 = $x0->xpath("images[1]/image[6]");
+echo $this->getValue($v3_0);?>
+
+<?php echo $this->getValue($v3_1);?>
+
+<?php echo $this->getValue($v3_2);?>
+
+<?php echo $this->getValue($v3_3);?>
+
+<?php echo $this->getValue($v3_4);?>
+
+<?php echo $this->getValue($v3_5);

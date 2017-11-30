@@ -54,6 +54,14 @@ function add_property_custom_fields( $new_fields ) {
  
     $new_fields['fields'] = array(
         array(
+            'name'    => 'Reference', // field name
+            'desc'    => 'Example Value: FP2456', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "rea	lhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => true // true to display field value on property detail page, otherwise false
+        ),
+        array(
             'name'    => 'Bar Size', // field name
             'desc'    => 'Example Value: 70', // field description
             'postfix' => 'm2', // field postfix (if any)
@@ -144,6 +152,14 @@ function add_property_custom_fields( $new_fields ) {
 		array(
             'name'    => 'Other Costs', // field name
             'desc'    => 'Example Value: Spotify', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => true // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Listing Active', // field name
+            'desc'    => 'Example Value: Yes or No', // field description
             'postfix' => '', // field postfix (if any)
             'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
             'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
