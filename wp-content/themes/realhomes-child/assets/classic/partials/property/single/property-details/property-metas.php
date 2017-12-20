@@ -12,10 +12,10 @@ $post_meta_data = get_post_custom( $post->ID );
 
 if ( is_singular( 'property' ) && ! empty( $post_meta_data['REAL_HOMES_property_id'][0] ) ) {
 	$prop_id = $post_meta_data['REAL_HOMES_property_id'][0];
-	echo '<span title="' . esc_html__( 'Property ID', 'framework' ) . '">';
-	include( INSPIRY_THEME_DIR . '/images/icon-id.svg' );
-	echo esc_html( $prop_id );
-	echo '</span>';
+	//echo '<span title="' . esc_html__( 'Property ID', 'framework' ) . '">';
+	//include( INSPIRY_THEME_DIR . '/images/icon-id.svg' );
+	//echo esc_html( $prop_id );
+	//echo '</span>';
 }
 
 if ( ! empty( $post_meta_data['REAL_HOMES_property_size'][0] ) ) {
@@ -95,7 +95,8 @@ if ( is_singular( 'property' ) ) {
 
 					$field_label = ( ! empty( $field['postfix'] ) ) ? $field['postfix'] : '';
 
-					echo '<span>';
+					//echo '<span style="width: 22%; float: left;">';
+                    echo '<span>';
 					if ( file_exists( $icons_dir . $field['icon'] . '.png' ) ) {
 
 						$data_rjs = ( file_exists( $icons_dir . $field['icon'] . '@2x.png' ) ) ? '2' : '';
