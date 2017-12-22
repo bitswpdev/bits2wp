@@ -171,3 +171,26 @@ function add_property_custom_fields( $new_fields ) {
 }
  
 add_filter( 'inspiry_property_custom_fields', 'add_property_custom_fields' );
+
+/*
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login {
+            background: #001a2b!important;
+        }
+
+        #login h1 a,
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri();
+            ?>/assets/classic/images/login-logo.png)!important;
+            height: 65px;
+            width: 320px;
+            background-size: 320px 65px;
+            background-repeat: no-repeat;
+            padding-bottom: 30px;
+        }
+
+    </style>
+    <?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+*/

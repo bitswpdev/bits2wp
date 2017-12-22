@@ -51,9 +51,9 @@ switch ( $theme_homepage_module ) {
 }
 ?>
 
-	<div class="main-wrapper contents">
+    <div class="main-wrapper contents">
 
-		<?php
+        <?php
 		/**
 		 * Advance Search
 		 */
@@ -77,7 +77,8 @@ switch ( $theme_homepage_module ) {
 		 * Get the order in which sections are to be displayed
 		 */
 		$home_sections      = get_option( 'inspiry_home_sections_order' );
-		$home_sections      = ( ! empty( $home_sections ) ) ? $home_sections : 'home-properties,features-section,featured-properties,blog-posts';
+		//$home_sections      = ( ! empty( $home_sections ) ) ? $home_sections : 'featured-properties,home-properties,features-section,blog-posts';
+        $home_sections      = 'featured-properties,home-properties,features-section,blog-posts';
 		$home_sections      = explode( ',', $home_sections );
 
 		/**
@@ -92,7 +93,7 @@ switch ( $theme_homepage_module ) {
 		}
 		?>
 
-	</div>
-	<!-- /.main-wrapper -->
+    </div>
+    <!-- /.main-wrapper -->
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
