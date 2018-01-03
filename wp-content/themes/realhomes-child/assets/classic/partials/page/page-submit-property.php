@@ -13,7 +13,7 @@ $submitted_successfully = false;
 $updated_successfully   = false;
 
 /* Check if action field is set and user is logged in */
-if ( isset( $_POST[ 'action' ] ) && is_user_logged_in() ) {
+if ( isset( $_POST[ 'action' ] ) /*&& is_user_logged_in()*/ ) {
 
 	/* the nonce */
 	if ( wp_verify_nonce( $_POST[ 'property_nonce' ], 'submit_property' ) ) {
@@ -312,36 +312,36 @@ if ( isset( $_POST[ 'action' ] ) && is_user_logged_in() ) {
 get_header();
 ?>
 
-	<!-- Page Head -->
-<?php get_template_part( 'assets/classic/partials/banners/banner', 'default' ); ?>
+    <!-- Page Head -->
+    <?php get_template_part( 'assets/classic/partials/banners/banner', 'default' ); ?>
 
-<!-- Content -->
-<div class="container contents single">
+    <!-- Content -->
+    <div class="container contents single">
 
-	<div class="row">
+        <div class="row">
 
-		<div class="span12 main-wrap">
+            <div class="span12 main-wrap">
 
-			<!-- Main Content -->
-			<div class="main">
+                <!-- Main Content -->
+                <div class="main">
 
-				<div class="inner-wrapper">
-					<?php
+                    <div class="inner-wrapper">
+                        <?php
 					/* Page contents */
 					if ( have_posts() ) :
 						while ( have_posts() ) :
 							the_post();
 							?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
-								<?php the_content(); ?>
-							</article>
-							<?php
+                            <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
+                                <?php the_content(); ?>
+                            </article>
+                            <?php
 						endwhile;
 					endif;
 
 
 					/* Stuff related to property submit or property edit */
-					if ( is_user_logged_in() ) {
+					/*if ( is_user_logged_in() ) {*/
 
 						if ( $invalid_nonce ) {
 
@@ -419,23 +419,24 @@ get_header();
 
 						} /* end of invalid nonce */
 
-					} else {
+					/*} else {
 
 						alert( __( 'Login Required:', 'framework' ), __( 'Please login to submit property!', 'framework' ) );
 
-					}
+					}*/
 					?>
-				</div>
+                    </div>
 
-			</div>
-			<!-- End Main Content -->
+                </div>
+                <!-- End Main Content -->
 
-		</div>
-		<!-- End span12 -->
+            </div>
+            <!-- End span12 -->
 
-	</div>
-	<!-- End contents row -->
+        </div>
+        <!-- End contents row -->
 
-</div><!-- End Content -->
+    </div>
+    <!-- End Content -->
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>

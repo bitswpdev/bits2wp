@@ -91,6 +91,36 @@ switch ( $theme_homepage_module ) {
 				}
 			}
 		}
+        
+        
+                /* Homepage Contents from Page Editor */
+                if ( have_posts() ) :
+                    while ( have_posts() ) :
+                        the_post();
+                        $content = get_the_content( '' );
+                        if ( ! empty( $content ) ) {
+                            ?>
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="span12">
+                        <div class="main <?php echo esc_attr( $main_border_class ); ?>">
+                            <div class="inner-wrapper">
+                                <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
+                                    <?php the_content(); ?>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+
+                        }
+                    endwhile;
+                endif;
+
 		?>
 
     </div>
