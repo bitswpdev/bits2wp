@@ -11,9 +11,9 @@
 if ( inspiry_is_search_fields_configured() ) :
 	$theme_search_fields = inspiry_get_search_fields();
 	?>
-	<div class="as-form-wrap">
-		<form class="advance-search-form clearfix" action="<?php echo esc_url( inspiry_get_search_page_url() ); ?>" method="get">
-		<?php
+    <div class="as-form-wrap">
+        <form class="advance-search-form clearfix" action="<?php echo esc_url( inspiry_get_search_page_url() ); ?>" method="get">
+            <?php
 
 		/*
 		 * Keyword Field
@@ -102,9 +102,13 @@ if ( inspiry_is_search_fields_configured() ) :
 
 
 		if ( isset( $_GET['sortby'] ) ) {
-			?><input type="hidden" name="sortby" value="<?php echo $_GET['sortby']; ?>" /><?php
+			?><input type="hidden" name="sortby" value="<?php echo $_GET['sortby']; ?>" />
+                <?php
 
-		}
+		}else{
+            ?><input type="hidden" name="sortby" value="price-asc" />
+                    <?php
+        }
 
 
 		/*
@@ -115,7 +119,7 @@ if ( inspiry_is_search_fields_configured() ) :
 		}
 
 		?>
-		</form>
-	</div>
-	<?php
+        </form>
+    </div>
+    <?php
 endif;
