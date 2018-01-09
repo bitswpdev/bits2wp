@@ -89,9 +89,9 @@ if ( inspiry_is_search_fields_configured() ) :
 		/*
 		 * Price Range
 		 */
-		
-        get_template_part( 'assets/classic/partials/property/views/search-fields/min-max-price-range' );
-		
+		if ( !in_array( 'min-max-price', $theme_search_fields ) ) {
+            get_template_part( 'assets/classic/partials/property/views/search-fields/min-max-price-range' );
+        }
 
 		/*
 		 * Min & Max Price
