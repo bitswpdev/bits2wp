@@ -1,1 +1,40 @@
 /* Child Theme - Custom CSS File for Buyers to Modify */
+
+#header-top {
+    border-bottom: 1px solid #343a3b;
+    margin-bottom: 20px;
+}
+
+.main-menu {
+    margin-right: 122px;
+}
+
+.header-contact-wrap {
+    position: relative;
+}
+
+.header-contact-wrap h4 {
+    color: #f38d28;
+    margin-left: 260px;
+    font-size: 28px;
+    padding-top: 28px;
+}
+
+.header-contact-tel {
+    float: right;
+    color: #f38d28;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.header-translate {
+    float: left;
+    padding: 6px 0 0 32px;
+}
+
+.header-contact-whatsapp {
+    max-height: 18px;
+    float: right;
+    margin-right: 30px;
+}

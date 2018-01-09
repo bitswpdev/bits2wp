@@ -22,6 +22,13 @@ if ( inspiry_is_search_fields_configured() ) :
 			get_template_part( 'assets/classic/partials/property/views/search-fields/keyword' );
 		}
 
+		/*
+		 * Admin Reference Dropdown
+		 */
+		if ( is_user_logged_in() ) {
+			get_template_part( 'assets/classic/partials/property/views/search-fields/reference' );
+		}
+
 
 		/*
 		 * Property ID Field
@@ -78,6 +85,13 @@ if ( inspiry_is_search_fields_configured() ) :
 			get_template_part( 'assets/classic/partials/property/views/search-fields/min-garages' );
 		}
 
+
+		/*
+		 * Price Range
+		 */
+		
+        get_template_part( 'assets/classic/partials/property/views/search-fields/min-max-price-range' );
+		
 
 		/*
 		 * Min & Max Price

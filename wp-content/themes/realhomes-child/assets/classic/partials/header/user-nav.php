@@ -4,7 +4,15 @@
  */
 $enable_user_nav = get_option('theme_enable_user_nav');
 if ($enable_user_nav == "true") {
-    ?>
+    
+    if (!is_user_logged_in()) {
+            ?>
+    <div class="header-translate">
+        <?php
+            echo do_shortcode('[google-translator]');
+            ?>
+    </div>
+    <?php } ?>
     <div class="user-nav clearfix">
         <?php
 
@@ -13,11 +21,11 @@ if ($enable_user_nav == "true") {
          */
         $favorites_url = inspiry_get_favorites_url();
     if (!empty($favorites_url)) {
-        if (!is_user_logged_in()) {
+        
         ?>
-            <span style="color: #f38d28; font-weight: bold;">UK @ Local Rate: 0203 7406618 or Robby +34 664 893 320
-</span>&nbsp;&nbsp;&nbsp;
-            <?php } ?>
+            <!--<span style="color: #f38d28; font-weight: bold;">UK @ Local Rate: 0203 7406618 or Robby +34 664 893 320
+</span>&nbsp;&nbsp;&nbsp;-->
+
             <a href="<?php echo esc_url($favorites_url); ?>"><i class="fa fa-star"></i><?php _e('Favorites', 'framework'); ?></a>
             <?php
 

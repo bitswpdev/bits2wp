@@ -18,14 +18,14 @@ $location_select_titles = inspiry_get_location_titles();
 /* Generate required location select boxes */
 for ( $i = 0; $i < $location_select_count; $i++ ) {
 	?>
-	<div class="rh_form__item rh_form--3-column rh_form--columnAlign">
-		<label for="<?php echo esc_attr( $location_select_names[ $i ] ); ?>"><?php echo esc_html( $location_select_titles[ $i ] ); ?></label>
-	    <span class="selectwrap">
+    <div class="rh_form__item rh_form--3-column rh_form--columnAlign">
+        <label for="<?php echo esc_attr( $location_select_names[ $i ] ); ?>"><?php echo esc_html( $location_select_titles[ $i ] ); ?></label>
+        <span class="selectwrap">
 	        <select name="<?php echo esc_attr( $location_select_names[ $i ] ); ?>" id="<?php echo esc_attr( $location_select_names[ $i ] ); ?>" class="rh_select2"></select>
 	    </span>
-	</div>
-	<!-- /.rh_form__item -->
-	<?php
+    </div>
+    <!-- /.rh_form__item -->
+    <?php
 
 }
 

@@ -15,15 +15,16 @@ $location_select_titles = inspiry_get_location_titles();
 // Generate required location select boxes
 for ($i=0; $i < $location_select_count; $i++) {
     ?>
-	<div class="option-bar large">
-		<label for="<?php echo esc_attr($location_select_names[$i]); ?>">
+    <div class="option-bar large">
+        <label for="<?php echo esc_attr($location_select_names[$i]); ?>">
 			<?php echo esc_html($location_select_titles[$i]); ?>
 		</label>
         <span class="selectwrap">
             <select name="<?php echo esc_attr($location_select_names[$i]); ?>" id="<?php echo esc_attr($location_select_names[$i]); ?>" class="search-select"></select>
         </span>
-	</div>
-	<?php
+    </div>
+
+    <?php
 
 }
 

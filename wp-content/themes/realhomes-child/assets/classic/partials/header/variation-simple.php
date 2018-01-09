@@ -8,10 +8,10 @@
 
 ?>
 
-<header id="header" class="clearfix">
+    <header id="header" class="clearfix">
 
-	<div id="header-top" class="clearfix">
-		<?php
+        <div id="header-top" class="clearfix">
+            <?php
 		/* WPML Language Switcher */
 		if ( function_exists( 'icl_get_languages' ) ) {
 			$wpml_lang_switcher = get_option( 'theme_wpml_lang_switcher' );
@@ -28,50 +28,52 @@
 		$header_email = get_option( 'theme_header_email' );
 		if ( ! empty( $header_email ) ) {
 			?>
-			<h2 id="contact-email">
-				<?php
+                <h2 id="contact-email">
+                    <?php
 				include( INSPIRY_THEME_DIR . '/images/icon-mail.svg' );
 				esc_html_e( 'Email us at', 'framework' ); ?> :
-				<a href="mailto:<?php echo esc_attr( antispambot( $header_email ) ); ?>"><?php echo esc_html( antispambot( $header_email ) ); ?></a>
-			</h2>
-			<?php
+                        <a href="mailto:<?php echo esc_attr( antispambot( $header_email ) ); ?>">
+                            <?php echo esc_html( antispambot( $header_email ) ); ?>
+                        </a>
+                </h2>
+                <?php
 
 		}
 		?>
 
-		<!-- Social Navigation -->
-		<?php get_template_part( 'assets/classic/partials/header/social-nav' ); ?>
+                <!-- Social Navigation -->
+                <?php get_template_part( 'assets/classic/partials/header/social-nav' ); ?>
 
-		<!-- User Navigation -->
-		<?php get_template_part( 'assets/classic/partials/header/user-nav' ); ?>
+                <!-- User Navigation -->
+                <?php get_template_part( 'assets/classic/partials/header/user-nav' ); ?>
 
-	</div>
+        </div>
 
-	<!-- Logo -->
-	<div id="logo">
+        <!-- Logo -->
+        <div id="logo">
 
-		<?php
+            <?php
 		$logo_path = get_option( 'theme_sitelogo' );
 		if ( ! empty( $logo_path ) ) {
 			?>
-			<a title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url() ); ?>">
+                <a title="<?php bloginfo( 'name' ); ?>" href="<?php echo esc_url( home_url() ); ?>">
 				<img src="<?php echo esc_url( $logo_path ); ?>" alt="<?php bloginfo( 'name' ); ?>">
 			</a>
-			<h2 class="logo-heading only-for-print">
-				<a href="<?php echo esc_url( home_url() ); ?>"  title="<?php bloginfo( 'name' ); ?>">
-					<?php bloginfo( 'name' ); ?>
-				</a>
-			</h2>
-			<?php
+                <h2 class="logo-heading only-for-print">
+                    <a href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                        <?php bloginfo( 'name' ); ?>
+                    </a>
+                </h2>
+                <?php
 
 		} else {
 			?>
-			<h2 class="logo-heading">
-				<a href="<?php echo esc_url( home_url() ); ?>"  title="<?php bloginfo( 'name' ); ?>">
-					<?php  bloginfo( 'name' ); ?>
-				</a>
-			</h2>
-			<?php
+                    <h2 class="logo-heading">
+                        <a href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'name' ); ?>">
+                            <?php  bloginfo( 'name' ); ?>
+                        </a>
+                    </h2>
+                    <?php
 
 		}
 
@@ -82,11 +84,19 @@
 			echo '</span></div>';
 		}
 		?>
-	</div>
+        </div>
 
 
-	<div class="menu-and-contact-wrap">
-		<?php
+        <div class="header-contact-wrap">
+
+            <div class="header-contact-tel">
+                <!--Email: <a href="mailto:info@barinthesun.com">info@barinthesun.com</a> <br />-->
+                Office: +34 952 464 615 <br/> Mobile: +34 664 893 320 <img src="/wp-content/uploads/2018/01/whatsapp-logo.png" align="left" class="header-contact-whatsapp" /> <br/> UK Low Rate: +44 203 740 6618
+            </div>
+            <h4>Commercial Agents on the Costa del Sol</h4>
+        </div>
+        <div class="menu-and-contact-wrap">
+            <?php
 		$header_phone = get_option( 'theme_header_phone' );
 		if ( ! empty( $header_phone ) ) {
 			$desktop_version = '<span class="desktop-version">' . $header_phone . '</span>';
@@ -96,15 +106,17 @@
 		}
 		?>
 
-		<!-- Start Main Menu-->
-		<nav class="main-menu">
-			<div class="rh_menu__hamburger hamburger hamburger--squeeze">
-				<div class="hamburger-box">
-					<div class="hamburger-inner"></div>
-				</div>
-				<p><?php esc_html_e( 'Menu', 'framework' ); ?></p>
-			</div>
-			<?php
+                <!-- Start Main Menu-->
+                <nav class="main-menu">
+                    <div class="rh_menu__hamburger hamburger hamburger--squeeze">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                        <p>
+                            <?php esc_html_e( 'Menu', 'framework' ); ?>
+                        </p>
+                    </div>
+                    <?php
 			if ( has_nav_menu( 'main-menu' ) ) {
 				wp_nav_menu( array(
 					'theme_location'    => 'main-menu',
@@ -136,8 +148,8 @@
 				}
 			}
 			?>
-		</nav>
-		<!-- End Main Menu -->
-	</div>
+                </nav>
+                <!-- End Main Menu -->
+        </div>
 
-</header>
+    </header>

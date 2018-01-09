@@ -43,7 +43,7 @@ if ( 'true' == $display_similar_properties ) {
 
 	$tax_count = count( $tax_query );   // Count number of taxonomies.
 	if ( $tax_count > 1 ) {
-		$tax_query['relation'] = 'OR';  // Add OR relation if more than one.
+		//$tax_query['relation'] = 'OR';  // Add OR relation if more than one.
 	}
 	if ( $tax_count > 0 ) {
 		$similar_properties_args['tax_query'] = $tax_query;   // Add taxonomies query.
@@ -69,12 +69,17 @@ if ( 'true' == $display_similar_properties ) {
 
 	if ( $similar_properties_query->have_posts() ) :
 		?>
-		<section class="listing-layout property-grid">
-			<div class="list-container clearfix">
-				<?php
+    <section class="listing-layout property-grid">
+        <div class="list-container clearfix">
+            <?php
 				$similar_properties_title = get_option( 'theme_similar_properties_title' );
 				if ( ! empty( $similar_properties_title ) ) {
-					?><h3><?php echo esc_html( $similar_properties_title ); ?></h3><?php
+					?>
+                <h3>
+                    <?php echo esc_html( $similar_properties_title ); ?>
+                </h3>
+                <?php
+                    //print_r($similar_properties_args);
 				}
 				while ( $similar_properties_query->have_posts() ) :
 					$similar_properties_query->the_post();
@@ -85,9 +90,9 @@ if ( 'true' == $display_similar_properties ) {
 				endwhile;
 				wp_reset_query();
 				?>
-			</div>
-		</section>
-		<?php
+        </div>
+    </section>
+    <?php
 	endif;
 }
 ?>
