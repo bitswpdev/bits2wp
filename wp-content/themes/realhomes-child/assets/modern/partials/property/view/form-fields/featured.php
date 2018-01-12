@@ -8,9 +8,9 @@
 
 ?>
 
-<div class="rh_form__item rh_form--1-column rh_form--columnAlign featured-field-wrapper">
-	<div class="rh_checkbox rh_checkbox__featured">
-		<label for="featured">
+    <div class="rh_form__item rh_form--1-column rh_form--columnAlign featured-field-wrapper">
+        <div class="rh_checkbox rh_checkbox__featured">
+            <label for="featured">
 			<span class="rh_checkbox__title"><?php esc_html_e( 'Mark this property as featured property', 'framework' ); ?></span>
 			<input id="featured" name="featured" type="checkbox" <?php
 			if ( inspiry_is_edit_property() ) {
@@ -22,7 +22,7 @@
 			?> />
 			<span class="rh_checkbox__indicator"></span>
 		</label>
-	</div>
-	<!-- /.rh_checkbox -->
-</div>
-<!-- /.rh_form__item -->
+        </div>
+        <!-- /.rh_checkbox -->
+    </div>
+    <!-- /.rh_form__item -->

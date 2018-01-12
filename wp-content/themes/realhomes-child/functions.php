@@ -165,6 +165,150 @@ function add_property_custom_fields( $new_fields ) {
             'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
             'display' => true // true to display field value on property detail page, otherwise false
         ),
+        array(
+            'name'    => 'Lease (Years)', // field name
+            'desc'    => 'PRIVATE | e.g. 5-year lease', // field description
+            'postfix' => 'years', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Private Price', // field name
+            'desc'    => 'PRIVATE | Will not be displayed on site', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Days', // field name
+            'desc'    => 'PRIVATE | e.g. opening days', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Hours', // field name
+            'desc'    => 'PRIVATE | e.g. opening hours', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Approximate Turnover', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Length of Time in Business', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Name', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Telephone', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Email', // field name
+            'desc'    => 'PRIVATE | e.g. robby@barinthesun.com', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Mobile', // field name
+            'desc'    => 'PRIVATE | e.g. +34 662 15 48 16', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Company Name', // field name
+            'desc'    => 'PRIVATE | e.g. Spanish Bars S.L.', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Landlord/Gestoria Name', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Landlord/Gestoria Telephone', // field name
+            'desc'    => 'PRIVATE', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Inventory Owned By', // field name
+            'desc'    => 'PRIVATE | (If part-owned details overleaf)', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Business Name', // field name
+            'desc'    => 'PRIVATE | e.g. O Briens Bar', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Reason for Sale', // field name
+            'desc'    => 'PRIVATE | e.g. Moving back to the UK', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 6, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Business Address', // field name
+            'desc'    => 'PRIVATE | e.g. Calle Jacinto Benavente, Edificio Residencia 2 Local No 1, Fuengirola 29640, Málaga, Spain', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 12, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        ),
+        array(
+            'name'    => 'Owner Comments', // field name
+            'desc'    => 'PRIVATE | e.g. Will consider offers', // field description
+            'postfix' => '', // field postfix (if any)
+            'icon'    => 'size', // Place “png” icon in "realhomes/assets/(variation you are using)/icons" directory. Retina (double sized) icons should use @2x as postfix with icon name. E.g: year.png, year@2x.png
+            'columns' => 12, // use ‘6’ for two fields in one row and ’12’ for one field in one row
+            'display' => false // true to display field value on property detail page, otherwise false
+        )
     );
  
     return $new_fields;

@@ -38,3 +38,9 @@
     float: right;
     margin-right: 30px;
 }
+
+.bible-cell {
+    padding: 10px;
+    color: #000;
+    font-weight: bold;
+}

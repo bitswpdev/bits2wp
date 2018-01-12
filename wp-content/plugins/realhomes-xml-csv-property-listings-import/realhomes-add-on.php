@@ -4,7 +4,7 @@
 Plugin Name: WP All Import - Real Homes Add-On
 Plugin URI: http://www.wpallimport.com/
 Description: Supporting imports into the Real Homes theme.
-Version: 1.1.0
+Version: 5.1.0
 Author: Soflyy
 */
 
@@ -74,6 +74,24 @@ $realhomes_addon->add_field( 'REAL_HOMES_terrace_tax', 'Terrace Tax', 'text', nu
 $realhomes_addon->add_field( 'REAL_HOMES_other_costs', 'Other Costs', 'text', null, '' );
 
 $realhomes_addon->add_field( 'REAL_HOMES_canonical_url', 'Canonical URL', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_name', 'Owner Name', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_email', 'Owner Email', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_telephone', 'Owner Telephone', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_mobile', 'Owner Mobile', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_company_name', 'Owner Company Name', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_private_price', 'Private Price', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_reason_for_sale', 'Reason for Sale', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_owner_comments', 'Owner Comments', 'text', null, '' );
+
+$realhomes_addon->add_field( 'REAL_HOMES_business_name', 'Business Name', 'text', null, '' );
 
 $realhomes_addon->add_field( 'REAL_HOMES_active', 'Active', 'text', null, '' );
 
@@ -303,9 +321,17 @@ function realhomes_addon_import( $post_id, $data, $import_options, $article ) {
 		'REAL_HOMES_terrace_tax',
 		'REAL_HOMES_other_costs',
 		'REAL_HOMES_canonical_url',
-		'REAL_HOMES_active'
-		
-	);
+		'REAL_HOMES_active',
+        'REAL_HOMES_owner_name',
+        'REAL_HOMES_owner_email',
+        'REAL_HOMES_owner_telephone',
+        'REAL_HOMES_owner_mobile',
+        'REAL_HOMES_owner_company_name',
+        'REAL_HOMES_private_price',
+        'REAL_HOMES_reason_for_sale',
+        'REAL_HOMES_owner_comments',
+        'REAL_HOMES_business_name'
+    );
 
 	// image fields
 	$image_fields = array(

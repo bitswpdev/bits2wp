@@ -1,6 +1,10 @@
 <div class="span6 ">
     <article <?php post_class( 'property-item clearfix' ); ?>>
-        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+        <h4>
+            <a href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+            </a>
+        </h4>
 
         <figure>
             <a href="<?php the_permalink(); ?>">
@@ -30,8 +34,11 @@
                 echo inspiry_get_property_types($post->ID);
                 ?>
             </h5>
-            <p><?php framework_excerpt(12); ?></p>
-            <a class="more-details" href="<?php the_permalink() ?>"><?php _e('More Details ', 'framework'); ?><i class="fa fa-caret-right"></i></a>
+            <p>
+                <?php framework_excerpt(12); ?>
+            </p>
+            <a class="more-details" href="<?php the_permalink() ?>">
+                <?php _e('More Details ', 'framework'); ?><i class="fa fa-caret-right"></i></a>
         </div>
 
         <div class="property-meta">

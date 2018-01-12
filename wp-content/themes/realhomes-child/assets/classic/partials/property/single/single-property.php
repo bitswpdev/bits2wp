@@ -20,8 +20,8 @@ if ( $banner_image_id ) {
 }
 ?>
 
-<div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('<?php echo esc_url( $banner_image_path ); ?>'); background-size: cover;">
-    <?php if ( ! ( 'true' == get_option( 'theme_banner_titles' ) ) ) : ?>
+    <div class="page-head" style="background-repeat: no-repeat;background-position: center top;background-image: url('<?php echo esc_url( $banner_image_path ); ?>'); background-size: cover;">
+        <?php if ( ! ( 'true' == get_option( 'theme_banner_titles' ) ) ) : ?>
         <div class="container">
             <div class="wrap clearfix">
                 <h1 class="page-title"><span><?php the_title(); ?></span></h1>
@@ -33,19 +33,20 @@ if ( $banner_image_id ) {
                 ?>
             </div>
         </div>
-    <?php endif; ?>
-</div><!-- End Page Head -->
+        <?php endif; ?>
+    </div>
+    <!-- End Page Head -->
 
-<!-- Content -->
-<div class="container contents detail">
-    <div class="row">
-        <div class="span9 main-wrap">
+    <!-- Content -->
+    <div class="container contents detail">
+        <div class="row">
+            <div class="span9 main-wrap">
 
-            <!-- Main Content -->
-            <div class="main">
+                <!-- Main Content -->
+                <div class="main">
 
-                <div id="overview">
-                    <?php
+                    <div id="overview">
+                        <?php
                     if ( have_posts() ) :
                         while ( have_posts() ) :
                             the_post();
@@ -55,9 +56,17 @@ if ( $banner_image_id ) {
                                 /**
                                  * 1. Property Images Slider
                                  */
-                                ?>
-                                <div class="slider-main-wrapper">
-                                    <?php
+                                
+                                    ?>
+                            <div class="share-networks clearfix">
+                                <span class="share-label"><?php _e('Share this', 'framework'); ?></span>
+                                <span><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><i class="fa fa-facebook fa-lg"></i><?php _e('Facebook','framework'); ?></a></span>
+                                <span><a target="_blank" href="https://twitter.com/share?url=<?php the_permalink(); ?>" ><i class="fa fa-twitter fa-lg"></i><?php _e('Twitter','framework'); ?></a></span>
+                                <span><a target="_blank" href="https://plus.google.com/share?url={<?php the_permalink(); ?>}" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes')"><i class="fa fa-google-plus fa-lg"></i><?php _e('Google','framework'); ?></a></span>
+                            </div>
+
+                            <div class="slider-main-wrapper">
+                                <?php
                                         $gallery_slider_type = get_post_meta( $post->ID, 'REAL_HOMES_gallery_slider_type', true );
 
                                         /* For demo purpose only */
@@ -75,11 +84,11 @@ if ( $banner_image_id ) {
                                             // Add to favorites.
                                             get_template_part( 'assets/classic/partials/property/single/property-details/property-add-to-favorites' );
                                         ?>
-                                        <!-- Print link -->
-                                        <span class="printer-icon"><a href="javascript:window.print()"><i class="fa fa-print"></i></a></span>
+                                            <!-- Print link -->
+                                            <span class="printer-icon"><a href="javascript:window.print()"><i class="fa fa-print"></i></a></span>
                                     </div>
-                                </div>
-                                <?php
+                            </div>
+                            <?php
                                 /**
                                  * 2. Property Information Bar, Icons Bar, Text Contents and Features
                                  */
@@ -137,11 +146,12 @@ if ( $banner_image_id ) {
                         endwhile;
                     endif;
                     ?>
+                    </div>
+
                 </div>
+                <!-- End Main Content -->
 
-            </div><!-- End Main Content -->
-
-            <?php
+                <?php
             /**
              * 9. Similar Properties
              */
@@ -153,36 +163,39 @@ if ( $banner_image_id ) {
              */
             if ( comments_open() || get_comments_number() ) {
                 ?>
-                <div class="property-comments">
-	                <?php comments_template(); ?>
-                </div>
-                <?php
+                    <div class="property-comments">
+                        <?php comments_template(); ?>
+                    </div>
+                    <?php
             }
             ?>
 
-        </div> <!-- End span9 -->
+            </div>
+            <!-- End span9 -->
 
-        <?php
+            <?php
         if ( 'agent-in-sidebar' == $theme_property_detail_variation ) {
             ?>
-            <div class="span3 sidebar-wrap">
-                <!-- Sidebar -->
-                <aside class="sidebar property-sidebar">
-                    <?php get_template_part( 'assets/classic/partials/property/single/property-details/property-agent-for-sidebar' ); ?>
-                    <?php
+                <div class="span3 sidebar-wrap">
+                    <!-- Sidebar -->
+                    <aside class="sidebar property-sidebar">
+                        <?php get_template_part( 'assets/classic/partials/property/single/property-details/property-agent-for-sidebar' ); ?>
+                        <?php
                     if ( ! dynamic_sidebar( 'property-sidebar' ) ) :
                     endif;
                     ?>
-                </aside>
-                <!-- End Sidebar -->
-            </div>
-        <?php
+                    </aside>
+                    <!-- End Sidebar -->
+                </div>
+                <?php
         } else {
             get_sidebar( 'property' );
         }
         ?>
 
-    </div><!-- End contents row -->
-</div><!-- End Content -->
+        </div>
+        <!-- End contents row -->
+    </div>
+    <!-- End Content -->
 
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
