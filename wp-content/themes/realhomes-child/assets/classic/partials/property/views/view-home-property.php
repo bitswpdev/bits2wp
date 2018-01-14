@@ -31,7 +31,8 @@
                 property_price();
 
                 // property types
-                echo inspiry_get_property_types($post->ID);
+                //echo inspiry_get_property_types($post->ID);
+                echo '<small> - Ref: ' . get_post_meta($post->ID,'REAL_HOMES_reference',true) . '</small>';
                 ?>
             </h5>
             <p>

@@ -82,6 +82,9 @@ if ( isset( $_GET['inactive'] ) ){
 						'paged' => $paged,
                         //'post_status' => array( 'pending', 'draft', 'publish', 'future' ),
 						'post_status' => array( $post_status_list ),
+                        'meta_key' => 'REAL_HOMES_property_price',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'ASC'
 					);
 
 					$my_properties_query = new WP_Query( $my_props_args );
@@ -148,6 +151,30 @@ if ( isset( $_GET['inactive'] ) ){
                                             </td>
                                             <td class="cell bible-cell" style="color: <?php echo (esc_html( get_post_status() ) == 'publish' ? 'green' : 'red'); ?>;">
                                                 <?php echo (esc_html( get_post_status() ) == 'publish' ? 'ACTIVE' : 'INACTIVE'); ?>
+                                            </td>
+                                            <td class="cell bible-cell">
+                                                <?php
+                                                    /* Edit Post Link */
+                                                    //$submit_url = inspiry_get_submit_property_url();
+                                                    $submit_url = '/wp-admin/post.php?action=edit';
+                                                    if ( ! empty( $submit_url ) ) {
+                                                        $edit_link = esc_url( add_query_arg( 'post', $post->ID , $submit_url ) );
+                                                        ?>
+                                                    <a target="_blank" href="<?php echo esc_url( $edit_link ); ?>" style="margin: 5px;"><i class="fa fa-pencil"></i></a>
+                                                    <?php
+                                                    }
+
+                                                    /* Preview Post Link */
+                                                    if ( current_user_can( 'edit_posts' ) ) {
+                                                        $preview_link = set_url_scheme( get_permalink( $post->ID ) );
+                                                        $preview_link = esc_url( apply_filters( 'preview_post_link', add_query_arg( 'preview', 'true', $preview_link ) ) );
+                                                        if ( ! empty( $preview_link ) ) {
+                                                            ?>
+                                                        <a target="_blank" href="<?php echo esc_url( $preview_link ); ?>" style="margin: 5px;"><i class="fa fa-eye"></i></a>
+                                                        <?php
+                                                        }
+                                                    }
+                                                    ?>
                                             </td>
                                         </tr>
 

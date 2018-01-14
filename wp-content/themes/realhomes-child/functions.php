@@ -338,3 +338,123 @@ function my_login_logo() { ?>
     <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 */
+
+
+/**
+ * Current Page URL
+ *
+ * @return string
+ */
+function custom_taxonomy_page_url() {
+    $pageURL = 'http';
+    if ( isset( $_SERVER[ "HTTPS" ] ) && $_SERVER[ "HTTPS" ] == "on" ) {
+        $pageURL .= "s";
+    }
+
+    $pageURL .= "://www.";
+    if ( $_SERVER[ "SERVER_PORT" ] != "80" ) {
+        $pageURL .= $_SERVER[ "SERVER_NAME" ] . ":" . $_SERVER[ "SERVER_PORT" ] . $_SERVER[ "REQUEST_URI" ];
+    } else {
+        $pageURL .= $_SERVER[ "SERVER_NAME" ] . $_SERVER[ "REQUEST_URI" ];
+    }
+
+    if ( $_SERVER[ 'QUERY_STRING' ] ) {
+        $pos = strpos( $pageURL, 'view' );
+        if ( $pos ) {
+            $pageURL = substr( $pageURL, 0, $pos - 1 );
+        }
+    }
+
+    return $pageURL;
+}
+
+//For also searching the admin screen for meta info
+add_filter( 'posts_join', 'segnalazioni_search_join' );
+function segnalazioni_search_join ( $join ) {
+    global $pagenow, $wpdb;
+
+    // I want the filter only when performing a search on edit page of Custom Post Type named "segnalazioni".
+    if ( is_admin() && 'edit.php' === $pagenow && 'segnalazioni' === $_GET['post_type'] && ! empty( $_GET['s'] ) ) {    
+        $join .= 'LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+    }
+    return $join;
+}
+
+add_filter( 'posts_where', 'segnalazioni_search_where' );
+function segnalazioni_search_where( $where ) {
+    global $pagenow, $wpdb;
+
+    // I want the filter only when performing a search on edit page of Custom Post Type named "segnalazioni".
+    if ( is_admin() && 'edit.php' === $pagenow && 'segnalazioni' === $_GET['post_type'] && ! empty( $_GET['s'] ) ) {
+        $where = preg_replace(
+            "/\(\s*" . $wpdb->posts . ".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+            "(" . $wpdb->posts . ".post_title LIKE $1) OR (" . $wpdb->postmeta . ".meta_value LIKE $1)", $where );
+    }
+    return $where;
+}
+
+// Adding Google Analytics event tracking for CF7 submissions
+function hook_track_events() {
+    ?>
+    <script>
+        document.addEventListener('wpcf7mailsent', function(event) {
+            ga('send', 'event', 'Enquiry', 'submit');
+        }, false);
+
+    </script>
+    <?php
+}
+add_action('wp_head', 'hook_track_events');
+
+// Filtering the next and prev posts in the property detail sidebars
+function filter_next_post_sort($sort) {
+  $sort = "ORDER BY CAST(pm.meta_value AS UNSIGNED) ASC LIMIT 1";
+  return $sort;
+}
+function filter_next_post_where($where) {
+    global $post, $wpdb;
+    $where = "WHERE p.post_type = 'property' AND p.post_status = 'publish' AND pm.meta_key = 'REAL_HOMES_property_price' AND CAST(pm.meta_value AS UNSIGNED) > " . get_post_meta($post->ID, 'REAL_HOMES_property_price', true);
+    return $where;
+}
+function filter_post_join($join) {
+  global $post, $wpdb;
+  return $wpdb->prepare(" INNER JOIN wp_postmeta AS pm ON p.ID = pm.post_id");
+}
+function filter_previous_post_sort($sort) {
+  $sort = "ORDER BY CAST(pm.meta_value AS UNSIGNED) DESC LIMIT 1";
+  return $sort;
+}
+function filter_previous_post_where($where) {
+  global $post, $wpdb;
+    $where = "WHERE p.post_type = 'property' AND p.post_status = 'publish' AND pm.meta_key = 'REAL_HOMES_property_price' AND CAST(pm.meta_value AS UNSIGNED) < " . get_post_meta($post->ID, 'REAL_HOMES_property_price', true);
+    return $where;
+}
+
+add_filter('get_next_post_sort',   'filter_next_post_sort');
+add_filter('get_next_post_where',  'filter_next_post_where');
+add_filter('get_next_post_join',  'filter_post_join');
+add_filter('get_previous_post_sort',  'filter_previous_post_sort');
+add_filter('get_previous_post_where', 'filter_previous_post_where');
+add_filter('get_previous_post_join',  'filter_post_join');
+
+
+// Replace banner with a location-based banner by checking the location parameter in the querystring
+
+
+/**
+ * Get Default Banner
+ *
+ * @return mixed|string|void
+ */
+function get_default_banner() {
+    $banner_image_path = get_option( 'theme_general_banner_image' );
+    global $wp;
+    $current_url = home_url( $wp->request );
+    if ( isset( $_GET['location'] ) ) {
+        $location = sanitize_text_field( $_GET['location'] );
+        $banner_image_path = '/wp-content/themes/realhomes-child/assets/classic/images/'.$location.'.jpg';
+    }elseif(strpos($current_url, '/property-city/') > 0){
+        $banner_image_path = '/wp-content/themes/realhomes-child/assets/classic/images/'.str_replace('property-city/', '', $wp->request).'.jpg';
+    }
+    return empty( $banner_image_path ) ? INSPIRY_DIR_URI . '/images/banner.jpg' : $banner_image_path;
+}

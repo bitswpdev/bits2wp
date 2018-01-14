@@ -69,37 +69,39 @@ global $post;
 
                 $property_map_title = get_option( 'theme_property_map_title' );
                 if ( ! empty( $property_map_title ) ){
-                    ?><span class="map-label"><?php echo esc_html( $property_map_title ); ?></span><?php
+                    ?><span class="map-label"><?php echo esc_html( $property_map_title ); ?></span>
+            <?php
                 }
                 ?>
                 <div id="property_map"></div>
+                <p><strong>Note</strong>: Location pin is centred on the town and does not indicate the address of the business listed for sale</p>
                 <script>
                     /* Property Detail Page - Google Map for Property Location */
 
-                    function initialize_property_map(){
+                    function initialize_property_map() {
 
                         var propertyMarkerInfo = <?php echo json_encode( $property_marker ); ?>
 
                         var url = propertyMarkerInfo.icon;
-                        var size = new google.maps.Size( 42, 57 );
+                        var size = new google.maps.Size(42, 57);
 
                         // retina
-                        if( window.devicePixelRatio > 1.5 ) {
-                            if ( propertyMarkerInfo.retinaIcon ) {
+                        if (window.devicePixelRatio > 1.5) {
+                            if (propertyMarkerInfo.retinaIcon) {
                                 url = propertyMarkerInfo.retinaIcon;
-                                size = new google.maps.Size( 83, 113 );
+                                size = new google.maps.Size(83, 113);
                             }
                         }
 
                         var image = {
                             url: url,
                             size: size,
-                            scaledSize: new google.maps.Size( 42, 57 ),
-                            origin: new google.maps.Point( 0, 0 ),
-                            anchor: new google.maps.Point( 21, 56 )
+                            scaledSize: new google.maps.Size(42, 57),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(21, 56)
                         };
 
-                        var propertyLocation = new google.maps.LatLng( propertyMarkerInfo.lat, propertyMarkerInfo.lang );
+                        var propertyLocation = new google.maps.LatLng(propertyMarkerInfo.lat, propertyMarkerInfo.lang);
                         var propertyMapOptions = {
                             center: propertyLocation,
                             zoom: 15,
@@ -113,15 +115,15 @@ global $post;
                             icon: image
                         });
 
-	                    /* Info Box */
+                        /* Info Box */
                         var boxText = document.createElement("div");
                         boxText.className = 'map-info-window';
                         var innerHTML = "";
-                        if ( propertyMarkerInfo.thumb ) {
+                        if (propertyMarkerInfo.thumb) {
                             innerHTML += '<img class="prop-thumb" src="' + propertyMarkerInfo.thumb + '" alt="' + propertyMarkerInfo.title + '"/>';
                         }
                         innerHTML += '<h5 class="prop-title">' + propertyMarkerInfo.title + '</h5>';
-                        if ( propertyMarkerInfo.price ) {
+                        if (propertyMarkerInfo.price) {
                             innerHTML += '<p><span class="price">' + propertyMarkerInfo.price + '</span></p>';
                         }
                         innerHTML += '<div class="arrow-down"></div>';
@@ -132,32 +134,33 @@ global $post;
                             disableAutoPan: true,
                             maxWidth: 0,
                             alignBottom: true,
-                            pixelOffset: new google.maps.Size( -122, -48 ),
+                            pixelOffset: new google.maps.Size(-122, -48),
                             zIndex: null,
                             closeBoxMargin: "0 0 -16px -16px",
                             closeBoxURL: "<?php echo INSPIRY_DIR_URI . '/images/map/close.png'; ?>",
-                            infoBoxClearance: new google.maps.Size( 1, 1 ),
+                            infoBoxClearance: new google.maps.Size(1, 1),
                             isHidden: false,
                             pane: "floatPane",
                             enableEventPropagation: false
                         };
 
-                        var infoBox = new InfoBox( myOptions );
+                        var infoBox = new InfoBox(myOptions);
 
-	                    google.maps.event.addListener( propertyMarker, 'click', function(){
-		                    var scale = Math.pow( 2, propertyMap.getZoom() );
-		                    var offsety = ( (150/scale) || 0 );
-		                    var projection = propertyMap.getProjection();
-		                    var markerPosition = propertyMarker.getPosition();
-		                    var markerScreenPosition = projection.fromLatLngToPoint( markerPosition );
-		                    var pointHalfScreenAbove = new google.maps.Point( markerScreenPosition.x, markerScreenPosition.y - offsety );
-		                    var aboveMarkerLatLng = projection.fromPointToLatLng( pointHalfScreenAbove );
-		                    propertyMap.setCenter( aboveMarkerLatLng );
-		                    infoBox.open( propertyMap, propertyMarker );
-	                    });
+                        google.maps.event.addListener(propertyMarker, 'click', function() {
+                            var scale = Math.pow(2, propertyMap.getZoom());
+                            var offsety = ((150 / scale) || 0);
+                            var projection = propertyMap.getProjection();
+                            var markerPosition = propertyMarker.getPosition();
+                            var markerScreenPosition = projection.fromLatLngToPoint(markerPosition);
+                            var pointHalfScreenAbove = new google.maps.Point(markerScreenPosition.x, markerScreenPosition.y - offsety);
+                            var aboveMarkerLatLng = projection.fromPointToLatLng(pointHalfScreenAbove);
+                            propertyMap.setCenter(aboveMarkerLatLng);
+                            infoBox.open(propertyMap, propertyMarker);
+                        });
                     }
 
                     window.onload = initialize_property_map();
+
                 </script>
 
                 <?php
@@ -165,13 +168,13 @@ global $post;
 
             if ( $display_social_share == 'true' ) {
                 ?>
-                <div class="share-networks clearfix">
-                    <span class="share-label"><?php _e('Share this', 'framework'); ?></span>
-                    <span><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><i class="fa fa-facebook fa-lg"></i><?php _e('Facebook','framework'); ?></a></span>
-                    <span><a target="_blank" href="https://twitter.com/share?url=<?php the_permalink(); ?>" ><i class="fa fa-twitter fa-lg"></i><?php _e('Twitter','framework'); ?></a></span>
-                    <span><a target="_blank" href="https://plus.google.com/share?url={<?php the_permalink(); ?>}" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes')"><i class="fa fa-google-plus fa-lg"></i><?php _e('Google','framework'); ?></a></span>
-                </div>
-                <?php
+                    <div class="share-networks clearfix">
+                        <span class="share-label"><?php _e('Share this', 'framework'); ?></span>
+                        <span><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"><i class="fa fa-facebook fa-lg"></i><?php _e('Facebook','framework'); ?></a></span>
+                        <span><a target="_blank" href="https://twitter.com/share?url=<?php the_permalink(); ?>" ><i class="fa fa-twitter fa-lg"></i><?php _e('Twitter','framework'); ?></a></span>
+                        <span><a target="_blank" href="https://plus.google.com/share?url={<?php the_permalink(); ?>}" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes')"><i class="fa fa-google-plus fa-lg"></i><?php _e('Google','framework'); ?></a></span>
+                    </div>
+                    <?php
             }
         ?>
 

@@ -13,8 +13,9 @@
                 <option value="any">Any</option>
                 <?php
                 $field_key = "REAL_HOMES_reference";
+                $ref_sql = "SELECT DISTINCT pm.meta_value FROM wp_postmeta pm INNER JOIN wp_posts p ON pm.post_id = p.ID INNER JOIN wp_postmeta pm2 ON pm2.post_id = p.ID WHERE pm.meta_key LIKE 'REAL_HOMES_reference' AND p.post_status = 'publish' ORDER BY pm2.meta_value ASC";
                 global $wpdb;
-                $results = $wpdb->get_results( 'SELECT DISTINCT meta_value FROM wp_postmeta WHERE meta_key LIKE "'.$field_key.'" ORDER BY meta_value ASC' );
+                $results = $wpdb->get_results( $ref_sql );
                 
                 foreach ( $results as $k ) {
                     echo '<option value="' . $k->meta_value . '">' . $k->meta_value . '</option>';

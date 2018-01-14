@@ -5,10 +5,6 @@
     margin-bottom: 20px;
 }
 
-.main-menu {
-    margin-right: 122px;
-}
-
 .header-contact-wrap {
     position: relative;
 }
@@ -43,4 +39,58 @@
     padding: 10px;
     color: #000;
     font-weight: bold;
+}
+
+div.main a {
+    color: #2a5db0;
+    text-decoration: underline;
+}
+
+@media only screen and (max-device-width: 1000px) {
+    .header-contact-wrap {
+        text-align: center;
+    }
+    .header-contact-wrap h4 {
+        float: none;
+        padding-top: 8px;
+        margin-left: 0;
+        font-size: 18px;
+    }
+    .header-contact-tel {
+        float: none;
+    }
+    .header-contact-whatsapp {
+        float: none;
+        margin-right: 0;
+    }
+}
+
+@media print {
+    .header-contact-wrap {
+        text-align: center;
+    }
+    .header-contact-wrap h4 {
+        float: none;
+        padding-top: 8px;
+        margin-left: 0;
+        font-size: 18px;
+    }
+    .header-contact-tel {
+        float: none;
+    }
+    .header-contact-whatsapp {
+        float: none;
+        margin-right: 0;
+    }
+}
+
+
+
+#glt-translate-trigger {
+    right: auto;
+    left: 20px;
+}
+
+.property-item figure span.property-label {
+    background: green;
 }

@@ -5,14 +5,8 @@
 $enable_user_nav = get_option('theme_enable_user_nav');
 if ($enable_user_nav == "true") {
     
-    if (!is_user_logged_in()) {
-            ?>
-    <div class="header-translate">
-        <?php
-            echo do_shortcode('[google-translator]');
-            ?>
-    </div>
-    <?php } ?>
+    ?>
+
     <div class="user-nav clearfix">
         <?php
 
@@ -37,8 +31,10 @@ if ($enable_user_nav == "true") {
              * Property Submit Page
              */
             $submit_url = inspiry_get_submit_property_url();
-        if (! empty($submit_url)) {
-            ?><a href="<?php echo esc_url($submit_url); ?>"><i class="fa fa-plus-circle"></i><?php _e('Submit', 'framework'); ?></a>
+            if (! empty($submit_url)) {
+            ?>
+                <!--<a href="<?php echo esc_url($submit_url); ?>"><i class="fa fa-plus-circle"></i><?php _e('Submit', 'framework'); ?></a>-->
+                <a href="/wp-admin/edit.php?post_type=property"><i class="fa fa-plus-circle"></i>Edit Businesses</a>
                 <?php
 
         }
@@ -49,7 +45,7 @@ if ($enable_user_nav == "true") {
              */
             $my_properties_url = inspiry_get_my_properties_url();
         if (!empty($my_properties_url)) {
-            ?><a href="<?php echo esc_url($my_properties_url); ?>"><i class="fa fa-th-list"></i><?php _e('My Properties', 'framework'); ?></a>
+            ?><a href="<?php echo esc_url($my_properties_url); ?>"><i class="fa fa-th-list"></i><?php _e('Retail Price List', 'framework'); ?></a>
                     <?php
 
         }
