@@ -94,3 +94,7 @@ div.main a {
 .property-item figure span.property-label {
     background: green;
 }
+
+div.page-head {
+    background-position: center center!important;
+}

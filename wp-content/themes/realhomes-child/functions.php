@@ -418,7 +418,8 @@ function filter_next_post_where($where) {
 }
 function filter_post_join($join) {
   global $post, $wpdb;
-  return $wpdb->prepare(" INNER JOIN wp_postmeta AS pm ON p.ID = pm.post_id");
+    $join = " INNER JOIN wp_postmeta AS pm ON p.ID = pm.post_id";
+  return $join;
 }
 function filter_previous_post_sort($sort) {
   $sort = "ORDER BY CAST(pm.meta_value AS UNSIGNED) DESC LIMIT 1";
@@ -456,5 +457,5 @@ function get_default_banner() {
     }elseif(strpos($current_url, '/property-city/') > 0){
         $banner_image_path = '/wp-content/themes/realhomes-child/assets/classic/images/'.str_replace('property-city/', '', $wp->request).'.jpg';
     }
-    return empty( $banner_image_path ) ? INSPIRY_DIR_URI . '/images/banner.jpg' : $banner_image_path;
+    return empty( $banner_image_path ) ? '/wp-content/themes/realhomes-child/assets/classic/images/banner.jpg' : $banner_image_path;
 }
