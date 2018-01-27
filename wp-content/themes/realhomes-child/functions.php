@@ -459,3 +459,94 @@ function get_default_banner() {
     }
     return empty( $banner_image_path ) ? '/wp-content/themes/realhomes-child/assets/classic/images/banner.jpg' : $banner_image_path;
 }
+
+
+// Search modifications
+function real_homes_search( $search_args ) {
+
+    /* Initialize Taxonomy Query Array */
+    $tax_query = array();
+
+    /* Initialize Meta Query Array */
+    $meta_query = array();
+
+    /* If search arguments already have a meta query then get it and work on that */
+    if ( isset( $search_args[ 'meta_query' ] ) ) {
+        $meta_query = $search_args[ 'meta_query' ];
+    }
+
+    /* Keyword Search */
+    //$search_args = inspiry_keyword_search( $search_args );
+
+    /* Meta Search Filter */
+    $meta_query = apply_filters( 'inspiry_real_estate_meta_search', $meta_query );
+
+    /* Taxonomy Search Filter */
+    $tax_query = apply_filters( 'inspiry_real_estate_taxonomy_search', $tax_query );
+
+    /* If more than one taxonomies exist then specify the relation */
+    $tax_count = count( $tax_query );
+    if ( $tax_count > 1 ) {
+        $tax_query[ 'relation' ] = 'AND';
+    }
+
+    /* If more than one meta query elements exist then specify the relation */
+    $meta_count = count( $meta_query );
+    if ( $meta_count > 1 ) {
+        $meta_query[ 'relation' ] = 'AND';
+    }
+
+    /* If taxonomy query has some values then add it to search query */
+    if ( $tax_count > 0 ) {
+        $search_args[ 'tax_query' ] = $tax_query;
+    }
+
+    /* If meta query has some values then add it to search query */
+    if ( $meta_count > 0 ) {
+        $search_args[ 'meta_query' ] = $meta_query;
+    }
+
+    /* check if featured properties on top option is selected */
+    $inspiry_featured_properties_on_top = get_option( 'inspiry_featured_properties_on_top' );
+    if ( $inspiry_featured_properties_on_top == 'true' ) {
+        $search_args[ 'meta_key' ] = 'REAL_HOMES_featured';
+        $search_args[ 'orderby' ] = array(
+            'meta_value_num' => 'DESC',
+            'date' => 'DESC',
+        );
+    }
+
+    /* Sort by price */
+    if ( ( isset( $_GET[ 'min-price' ] ) && ( $_GET[ 'min-price' ] != inspiry_any_value() ) ) || ( isset( $_GET[ 'max-price' ] ) && ( $_GET[ 'max-price' ] != inspiry_any_value() ) ) ) {
+        $search_args[ 'orderby' ] = 'meta_value_num';
+        $search_args[ 'meta_key' ] = 'REAL_HOMES_property_price';
+        $search_args[ 'order' ] = 'ASC';
+    }
+
+    return $search_args;
+}
+
+add_filter( 'real_homes_search_parameters', 'real_homes_search' );
+
+if( !function_exists( 'inspiry_property_ref_search' ) ) :
+	/**
+	 * Add property id related search arguments to meta query
+	 *
+	 * @param $meta_query
+	 * @return array
+	 */
+	function inspiry_property_ref_search( $meta_query ) {
+		if ( isset( $_GET[ 'keyword' ] ) && ! empty( $_GET[ 'keyword' ] ) ) {
+			$property_ref = trim( $_GET[ 'keyword' ] );
+			$meta_query[] = array(
+				'key' => 'REAL_HOMES_reference',
+				'value' => $property_ref,
+				'compare' => '=',
+				'type' => 'CHAR'
+			);
+		}
+		return $meta_query;
+	}
+
+	add_filter( 'inspiry_real_estate_meta_search', 'inspiry_property_ref_search' );
+endif;

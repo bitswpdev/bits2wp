@@ -97,4 +97,5 @@ div.main a {
 
 div.page-head {
     background-position: center center!important;
+    min-height: 287px;
 }

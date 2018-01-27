@@ -48,6 +48,15 @@ if ( 'true' == $display_similar_properties ) {
 	if ( $tax_count > 0 ) {
 		$similar_properties_args['tax_query'] = $tax_query;   // Add taxonomies query.
 	}
+    
+    // Filter similar properties to be the same or lower price than the current property
+    $property_price = get_post_meta($post->ID, 'REAL_HOMES_property_price', true);
+    $similar_properties_args['meta_query'] = array(
+        'key'       => 'REAL_HOMES_property_price',
+        'value'     => intval($property_price),
+        'compare'   => '<=',
+        'type'      => 'numeric'
+    );
 
 	/* Sort Properties Based on Theme Option Selection */
 	$similar_properties_sorty_by = get_option( 'inspiry_similar_properties_sorty_by' );

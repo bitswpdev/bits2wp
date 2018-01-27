@@ -94,6 +94,9 @@ if ( isset( $_GET['inactive'] ) ){
                                 <table width="100%" cellpadding="4" cellspace="0" border="0">
                                     <tr>
                                         <td class="cell bible-cell">
+                                            Thumbnail
+                                        </td>
+                                        <td class="cell bible-cell">
                                             Business Name
                                         </td>
                                         <td class="cell bible-cell">
@@ -123,6 +126,15 @@ if ( isset( $_GET['inactive'] ) ){
 
 							?>
                                         <tr>
+                                            <td class="cell bible-cell">
+                                                <?php
+                                                if ( has_post_thumbnail( $post->ID ) ) {
+                                                    the_post_thumbnail( 'property-thumb-image' );
+                                                } else {
+                                                    inspiry_image_placeholder( 'property-thumb-image' );
+                                                }
+                                                ?>
+                                            </td>
 
                                             <td class="cell bible-cell">
                                                 <?php echo get_post_meta($post->ID, 'REAL_HOMES_business_name', true); ?>
